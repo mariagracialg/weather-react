@@ -56,7 +56,7 @@ export default function Search() {
                       name="search-box"
                       id="search-box"
                       className="form-control input-group mb-3"
-                      placeholder="Search a city..."
+                      placeholder="Search for a city"
                       width="50%"
                       autoComplete="off"
                       onChange={getCity}
@@ -77,8 +77,8 @@ export default function Search() {
                   </h4>
                   <br />
                   <img
-                    src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-                    alt="day"
+                    src={`./images/${icon}.svg`}
+                    alt={description}
                     width="30%"
                     id="today-weather-icon"
                     className="mb-1"
@@ -148,7 +148,7 @@ export default function Search() {
                       name="search-box"
                       id="search-box"
                       className="form-control input-group mb-3"
-                      placeholder="Search a city..."
+                      placeholder="Search for a city"
                       width="50%"
                       autoComplete="off"
                       onChange={getCity}
@@ -163,6 +163,10 @@ export default function Search() {
                     </div>
                   </div>
                 </form>
+                <p className="text-center p-3">
+                  Check the weather in your city. <br /> Find out if you'll be
+                  needing an umbrella ☂️
+                </p>
               </div>
             </div>
           </div>
