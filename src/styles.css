@@ -1,0 +1,120 @@
+body {
+  font-family: "Poppins", sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.search {
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.left-container {
+  padding: 10px;
+}
+.right-container {
+  padding: 20px;
+  background: rgba(227, 227, 227, 0.252);
+}
+.today-body {
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#today-weather-icon {
+  margin-top: -50px;
+  margin-bottom: -30px;
+}
+
+.today-weather-info {
+  margin-top: 25px;
+}
+.today-temp {
+  text-align: center;
+  font-size: 36px;
+}
+.weather-options {
+  text-align: left;
+}
+.today-min-max {
+  margin-top: 15px;
+}
+.today-min {
+  text-align: left;
+}
+.today-max {
+  text-align: right;
+}
+.weather-icon {
+  font-size: 40px;
+}
+.weeks-title {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.weeks-day {
+  text-align: center;
+  margin-top: 10px;
+}
+#forecast-icon {
+  margin-bottom: -20px;
+  margin-top: -10px;
+}
+.weather-temp {
+  font-size: 14px;
+  color: rgb(24, 24, 24);
+}
+#forecast-min-temp {
+  color: #70757a;
+  font-weight: 300;
+}
+#disclaimer {
+  font-size: 12px;
+}
+
+#forecast-footer {
+  text-align: right;
+  font-size: 12px;
+  padding-right: 25px;
+  margin-bottom: 5px;
+}
+.weather-fact {
+  font-size: 20px;
+}
+
+.weather-highlights {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+.card {
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px rgb(205, 204, 204);
+}
+.App .coder {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#current-location-button {
+  margin-left: 10px;
+}
+
+.card-body {
+  padding-top: 15px;
+  padding-right: 3px;
+  padding-bottom: 15px;
+  padding-left: 3px;
+}
+
+#today-temp-description {
+  padding-top: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
