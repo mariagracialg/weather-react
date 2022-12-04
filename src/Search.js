@@ -72,7 +72,7 @@ export default function Search() {
                   </div>
                 </form>
                 <div className="App today-body">
-                  <h4 className="mb-4">
+                  <h4>
                     In <span id="current-city">{ciudad}</span>
                   </h4>
                   <br />
@@ -81,7 +81,6 @@ export default function Search() {
                     alt={description}
                     width="30%"
                     id="today-weather-icon"
-                    className="mb-1"
                   />
                   <br />
                   <h3 id="today-temp-description">{description}</h3>
