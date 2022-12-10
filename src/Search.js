@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Search() {
   let [city, setCity] = useState(null);
-  let [ciudad, setCiudad] = useState(null);
-  let [temperature, setTemperature] = useState(null);
-  let [description, setDescription] = useState(null);
-  let [min, setMin] = useState(null);
-  let [max, setMax] = useState(null);
-  let [humidity, setHumidity] = useState(null);
-  let [wind, setWind] = useState(null);
-  let [icon, setIcon] = useState(null);
-  let [realFeel, setRealFeel] = useState(null);
-  let [pressure, setPressure] = useState(null);
+  let [data, setData] = useState({ ready: false });
 
   function getCity(event) {
     event.preventDefault();
@@ -28,20 +20,24 @@ export default function Search() {
 
     function showTemperature(response) {
       console.log(response.data);
-      setTemperature(Math.round(response.data.main.temp));
-      setDescription(response.data.weather[0].description);
-      setMin(Math.round(response.data.main.temp_min));
-      setMax(Math.round(response.data.main.temp_max));
-      setHumidity(response.data.main.humidity);
-      setWind(response.data.wind.speed);
-      setIcon(response.data.weather[0].icon);
-      setCiudad(response.data.name);
-      setRealFeel(Math.round(response.data.main.feels_like));
-      setPressure(Math.round(response.data.main.pressure));
+      setData({
+        ready: true,
+        temperature: Math.round(response.data.main.temp),
+        date: new Date(response.data.dt * 1000),
+        description: response.data.weather[0].description,
+        min: Math.round(response.data.main.temp_min),
+        max: Math.round(response.data.main.temp_max),
+        humidity: response.data.main.humidity,
+        wind: response.data.wind.speed,
+        icon: response.data.weather[0].icon,
+        city: response.data.name,
+        realFeel: Math.round(response.data.main.feels_like),
+        pressure: Math.round(response.data.main.pressure),
+      });
     }
   }
 
-  if (temperature) {
+  if (data.ready) {
     return (
       <div className="App ">
         <div className="container">
@@ -77,22 +73,27 @@ export default function Search() {
                 </form>
                 <div className="App today-body">
                   <h4>
-                    In <span id="current-city">{ciudad}</span>
+                    In <span id="current-city">{data.city}</span>
                   </h4>
+                  <h6>
+                    <FormattedDate date={data.date} />
+                  </h6>
                   <br />
                   <img
-                    src={`./images/${icon}.svg`}
-                    alt={description}
+                    src={`./images/${data.icon}.svg`}
+                    alt={data.description}
                     width="30%"
                     id="today-weather-icon"
                   />
                   <br />
-                  <h3 id="today-temp-description">{description}</h3>
+                  <h3 className="pt-4" id="today-temp-description">
+                    {data.description}
+                  </h3>
                   <div className="App today-body">
                     <div className="row today-weather-info">
                       <div className="col">
                         <h3 className="today-temp" id="today-degrees">
-                          {temperature}°C
+                          {data.temperature}°C
                         </h3>
                       </div>
                     </div>
@@ -100,13 +101,13 @@ export default function Search() {
                       <div className="col today-max">
                         <p>
                           <strong>Max</strong>{" "}
-                          <span id="max-temp">{max}°C</span>
+                          <span id="max-temp">{data.max}°C</span>
                         </p>
                       </div>
                       <div className="col today-min">
                         <p>
                           <strong>Min</strong>{" "}
-                          <span id="min-temp">{min}°C</span>
+                          <span id="min-temp">{data.min}°C</span>
                         </p>
                       </div>
                     </div>
@@ -125,7 +126,7 @@ export default function Search() {
                               <div className="col">
                                 <strong>Wind</strong>
                                 <br />
-                                <span>{wind} km/h</span>
+                                <span>{data.wind} km/h</span>
                               </div>
                             </div>
                             <div className="col text-center">
@@ -139,7 +140,7 @@ export default function Search() {
                               <div className="col">
                                 <strong>Humidity</strong>
                                 <br />
-                                <span>{humidity}%</span>
+                                <span>{data.humidity}%</span>
                               </div>
                             </div>
                           </div>
@@ -159,7 +160,7 @@ export default function Search() {
                               <div className="col">
                                 <strong>Pressure</strong>
                                 <br />
-                                <span>{pressure} hPA</span>
+                                <span>{data.pressure} hPA</span>
                               </div>
                             </div>
                             <div className="col text-center">
@@ -173,7 +174,7 @@ export default function Search() {
                               <div className="col">
                                 <strong>RealFeel</strong>
                                 <br />
-                                <span>{realFeel}°C</span>
+                                <span>{data.realFeel}°C</span>
                               </div>
                             </div>
                           </div>
