@@ -12,6 +12,8 @@ export default function Search() {
   let [humidity, setHumidity] = useState(null);
   let [wind, setWind] = useState(null);
   let [icon, setIcon] = useState(null);
+  let [realFeel, setRealFeel] = useState(null);
+  let [pressure, setPressure] = useState(null);
 
   function getCity(event) {
     event.preventDefault();
@@ -34,6 +36,8 @@ export default function Search() {
       setWind(response.data.wind.speed);
       setIcon(response.data.weather[0].icon);
       setCiudad(response.data.name);
+      setRealFeel(Math.round(response.data.main.feels_like));
+      setPressure(Math.round(response.data.main.pressure));
     }
   }
 
@@ -41,7 +45,7 @@ export default function Search() {
     return (
       <div className="App ">
         <div className="container">
-          <div className="card mb-3">
+          <div className="card">
             <div className="row g-0">
               <div className="col left-container">
                 <form
@@ -106,18 +110,74 @@ export default function Search() {
                         </p>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col today-max">
-                        <p>
-                          <strong>Humidity</strong>{" "}
-                          <span id="max-temp">{humidity}%</span>
-                        </p>
+                    <div className="card gradient border-0 m-3">
+                      <div className="row me-2 ms-2 mt-2 ">
+                        <div>
+                          <div className="row pe-4 ps-4 pt-2 pb-3">
+                            <div className="col">
+                              <div className="col">
+                                <img
+                                  src={`./images/wind.svg`}
+                                  alt="wind"
+                                  width="40%"
+                                />
+                              </div>
+                              <div className="col">
+                                <strong>Wind</strong>
+                                <br />
+                                <span>{wind} km/h</span>
+                              </div>
+                            </div>
+                            <div className="col text-center">
+                              <div className="col">
+                                <img
+                                  src={`./images/humidity.svg`}
+                                  alt="humidity"
+                                  width="40%"
+                                />
+                              </div>
+                              <div className="col">
+                                <strong>Humidity</strong>
+                                <br />
+                                <span>{humidity}%</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col today-min">
-                        <p>
-                          <strong>Wind</strong>{" "}
-                          <span id="min-temp">{wind}km/h</span>
-                        </p>
+                      <div className="row me-2 ms-2 mt-2 ">
+                        <div>
+                          <div className="row pe-4 ps-4 pt-2 pb-3">
+                            <div className="col">
+                              <div className="col">
+                                <img
+                                  src={`./images/barometer.svg`}
+                                  alt="barometer"
+                                  width="40%"
+                                />
+                              </div>
+                              <div className="col">
+                                <strong>Pressure</strong>
+                                <br />
+                                <span>{pressure} hPA</span>
+                              </div>
+                            </div>
+                            <div className="col text-center">
+                              <div className="col">
+                                <img
+                                  src={`./images/thermometer.svg`}
+                                  alt="thermometer"
+                                  width="40%"
+                                />
+                              </div>
+                              <div className="col">
+                                <strong>RealFeel</strong>
+                                <br />
+                                <span>{realFeel}°C</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
