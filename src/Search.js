@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function Search() {
   let [city, setCity] = useState(null);
@@ -90,13 +91,7 @@ export default function Search() {
                     {data.description}
                   </h3>
                   <div className="App today-body">
-                    <div className="row today-weather-info">
-                      <div className="col">
-                        <h3 className="today-temp" id="today-degrees">
-                          {data.temperature}°C
-                        </h3>
-                      </div>
-                    </div>
+                    <WeatherTemperature celsius={data.temperature} />
                     <div className="row today-min-max">
                       <div className="col today-max">
                         <p>

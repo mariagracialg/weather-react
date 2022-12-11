@@ -39,8 +39,8 @@ body {
   margin-top: 25px;
 }
 .today-temp {
-  text-align: center;
-  font-size: 36px;
+  text-align: right;
+  font-size: 34px;
 }
 .weather-options {
   text-align: left;
