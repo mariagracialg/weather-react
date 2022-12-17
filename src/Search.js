@@ -3,6 +3,7 @@ import axios from "axios";
 import "./styles.css";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
+import Forecast from "./Forecast";
 
 export default function Search() {
   let [city, setCity] = useState(null);
@@ -91,21 +92,7 @@ export default function Search() {
                     {data.description}
                   </h3>
                   <div className="App today-body">
-                    <WeatherTemperature celsius={data.temperature} />
-                    <div className="row today-min-max">
-                      <div className="col today-max">
-                        <p>
-                          <strong>Max</strong>{" "}
-                          <span id="max-temp">{data.max}°C</span>
-                        </p>
-                      </div>
-                      <div className="col today-min">
-                        <p>
-                          <strong>Min</strong>{" "}
-                          <span id="min-temp">{data.min}°C</span>
-                        </p>
-                      </div>
-                    </div>
+                    <WeatherTemperature celsius={data} />
                     <div className="card gradient border-0 m-3">
                       <div className="row me-2 ms-2 mt-2 ">
                         <div>
@@ -176,6 +163,11 @@ export default function Search() {
                         </div>
                       </div>
                     </div>
+                    <Forecast />
+                    <Forecast />
+                    <Forecast />
+                    <Forecast />
+                    <Forecast />
                   </div>
                 </div>
               </div>

@@ -69,9 +69,12 @@ body {
   margin-bottom: -20px;
   margin-top: -10px;
 }
-.weather-temp {
+
+.forecast-desc {
   font-size: 14px;
-  color: rgb(24, 24, 24);
+}
+.forecast-temp {
+  font-size: 18px;
 }
 #forecast-min-temp {
   color: #70757a;

@@ -1,4 +1,5 @@
 import React from "react";
+import { padStart } from "lodash";
 
 export default function FormattedDate(props) {
   console.log(props.date);
@@ -28,8 +29,8 @@ export default function FormattedDate(props) {
   let day = days[props.date.getDay()];
   let date = props.date.getDate();
   let month = months[props.date.getMonth()];
-  let hours = props.date.getHours();
-  let minutes = props.date.getMinutes();
+  let hours = padStart(String(props.date.getHours()), 2, 0);
+  let minutes = padStart(String(props.date.getMinutes()), 2, 0);
   return (
     <div>
       {day}, {month} {date} at {hours}:{minutes}
