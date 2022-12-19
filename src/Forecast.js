@@ -1,6 +1,15 @@
 import React from "react";
-
+import axios from "axios";
 export default function Forecast() {
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+
+  let apiKey = "55bb75aee5ffe7e4b5112ff6e6da39f1";
+  let city = `guayaquil`;
+  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(handleResponse);
+
   return (
     <div className="card gradient border-0 m-3">
       <div className="row ms-2 me-2 ">

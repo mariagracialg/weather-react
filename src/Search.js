@@ -21,7 +21,6 @@ export default function Search() {
     axios.get(url).then(showTemperature);
 
     function showTemperature(response) {
-      console.log(response.data);
       setData({
         ready: true,
         temperature: Math.round(response.data.main.temp),
@@ -163,10 +162,6 @@ export default function Search() {
                         </div>
                       </div>
                     </div>
-                    <Forecast />
-                    <Forecast />
-                    <Forecast />
-                    <Forecast />
                     <Forecast />
                   </div>
                 </div>
