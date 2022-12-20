@@ -14,7 +14,6 @@ export default function Forecast(props) {
   function showForecast(response) {
     setForecast(response.data.daily);
     setData(true);
-    console.log(response.data);
   }
 
   if (data) {
