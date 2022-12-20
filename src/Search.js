@@ -23,6 +23,7 @@ export default function Search() {
     function showTemperature(response) {
       setData({
         ready: true,
+        coord: response.data.coord,
         temperature: Math.round(response.data.main.temp),
         date: new Date(response.data.dt * 1000),
         description: response.data.weather[0].description,
@@ -153,7 +154,7 @@ export default function Search() {
                                 />
                               </div>
                               <div className="col">
-                                <strong>RealFeel</strong>
+                                <strong>RealFeel*</strong>
                                 <br />
                                 <span>{data.realFeel}°C</span>
                               </div>
@@ -162,7 +163,10 @@ export default function Search() {
                         </div>
                       </div>
                     </div>
-                    <Forecast />
+                    <Forecast coord={data.coord} />
+                    <p className="disclaimer pe-3">
+                      *RealFeel and Forecast available only in celsius
+                    </p>
                   </div>
                 </div>
               </div>

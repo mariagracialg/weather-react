@@ -24,7 +24,7 @@ body {
   text-align: center;
   line-height: 1.5;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .gradient {
@@ -80,9 +80,6 @@ body {
   color: #70757a;
   font-weight: 300;
 }
-#disclaimer {
-  font-size: 12px;
-}
 
 #forecast-footer {
   text-align: right;
@@ -107,6 +104,12 @@ body {
   text-align: center;
   margin-bottom: 20px;
   font-size: 12px;
+}
+
+.disclaimer {
+  text-align: end;
+  margin-bottom: 0px;
+  font-size: 10px;
 }
 
 #current-location-button {

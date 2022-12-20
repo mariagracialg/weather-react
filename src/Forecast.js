@@ -1,31 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-export default function Forecast() {
-  function handleResponse(response) {
+import ForecastData from "./ForecastData";
+import "./styles.css";
+
+export default function Forecast(props) {
+  let [data, setData] = useState(false);
+  let [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setData(false);
+  }, [props.coord]);
+
+  function showForecast(response) {
+    setForecast(response.data.daily);
+    setData(true);
     console.log(response.data);
   }
 
-  let apiKey = "55bb75aee5ffe7e4b5112ff6e6da39f1";
-  let city = `guayaquil`;
-  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(handleResponse);
-
-  return (
-    <div className="card gradient border-0 m-3">
-      <div className="row ms-2 me-2 ">
-        <img src={`./images/01d.svg`} alt="test-img" className="col p-0" />
-        <div className="col-5 text-start align-self-center text-capitalize p-0">
-          <strong>Sunday</strong>
-          <br />
-          <span className="forecast-desc">Broken Clouds</span>
-        </div>
-        <div className="col text-center align-self-center p-0">
-          <div className="forecast-temp">
-            <span>35°C</span> <br />
-            <span id="forecast-min-temp">24°C</span>
-          </div>
-        </div>
+  if (data) {
+    return (
+      <div>
+        {forecast.map(function (dailyForecast, index) {
+          return (
+            <div key={index}>
+              <ForecastData data={dailyForecast} />
+            </div>
+          );
+        })}
       </div>
-    </div>
-  );
+    );
+  } else {
+    let apiKey = "1fd8093fa5ff12d796d7de756cc9d6b9";
+    let lat = props.coord.lat;
+    let lon = props.coord.lon;
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(url).then(showForecast);
+    return null;
+  }
 }
